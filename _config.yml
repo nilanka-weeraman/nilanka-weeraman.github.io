@@ -1,7 +1,9 @@
 baseurl: ""
 url: ""
-title: "Nilanka's Blog"
-description: "Jekyll-style blog"
+title: "Nila Learns To Write"
+author: "Nilanka Weeraman"
+language: "en"
+description: "Hi there. This is an attempt to learn by writing. Thanks for your interest!"
 permalink: /:categories/:title/
 markdown: kramdown
 plugins: []

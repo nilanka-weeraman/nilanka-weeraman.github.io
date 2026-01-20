@@ -1,0 +1,7 @@
+baseurl: ""
+url: ""
+title: "Nilanka's Blog"
+description: "Jekyll-style blog"
+permalink: /:categories/:title/
+markdown: kramdown
+plugins: []

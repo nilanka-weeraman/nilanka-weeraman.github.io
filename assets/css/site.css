@@ -1,0 +1,113 @@
+:root {
+  color-scheme: light;
+  --bg: #f5f1ea;
+  --ink: #1e1c18;
+  --accent: #a64b2a;
+  --muted: #6c635a;
+  --card: #ffffff;
+  --border: #e2d7c7;
+  --shadow: rgba(30, 28, 24, 0.12);
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Spectral", "Georgia", serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #f5f1ea 0%, #efe6d8 100%);
+}
+
+.container {
+  width: min(900px, 92vw);
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 48px 0 24px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(120deg, #f5f1ea 0%, #f0e6d5 35%, #efe0cb 100%);
+}
+
+.site-title {
+  margin: 0;
+  font-family: "Bodoni Moda", "Times New Roman", serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  letter-spacing: 0.02em;
+}
+
+.site-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.site-tagline {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 48px;
+  display: grid;
+  gap: 20px;
+}
+
+.post-card {
+  padding: 20px 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(30, 28, 24, 0.18);
+}
+
+.post-card a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.post-card h2 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.post-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.post {
+  margin: 32px 0 64px;
+}
+
+.post-title {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  margin-bottom: 8px;
+}
+
+.post-content {
+  line-height: 1.75;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding-top: 32px;
+  }
+
+  .post-card {
+    padding: 18px;
+  }
+}

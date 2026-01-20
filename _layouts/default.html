@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+        <p class="site-tagline">{{ site.description }}</p>
+      </div>
+    </header>
+    <main class="container">
+      {{ content }}
+    </main>
+  </body>
+</html>

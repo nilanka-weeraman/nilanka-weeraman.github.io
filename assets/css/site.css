@@ -110,6 +110,18 @@ body {
   height: auto;
 }
 
+.post-image-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 16px 0;
+}
+
+.post-image-row .post-image {
+  margin: 0;
+}
+
 @media (max-width: 640px) {
   .site-header {
     padding-top: 32px;

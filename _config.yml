@@ -3,7 +3,7 @@ url: ""
 title: "NLTR"
 author: "Nilanka Weeraman"
 language: "en"
-description: "Hi there. This is to share my experiences in building , opinions and analysis. Thanks for your interest & I hope you'd stumble upon something valuable!"
+description: "Hi there. This is a humble attempt to share my experiences in building , opinions and analysis. Thanks for your interest & I hope you'd stumble upon something valuable!"
 permalink: /:categories/:title/
 markdown: kramdown
 plugins: []

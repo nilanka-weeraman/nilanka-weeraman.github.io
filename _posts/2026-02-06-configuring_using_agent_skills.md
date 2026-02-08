@@ -30,19 +30,22 @@ In Codex <br>
 go to /skills
 
 ```text
-/skills  use skills to improve how Codex performs specific tasks```
+/skills  use skills to improve how Codex performs specific tasks
+```
 
 enter
 
 ```text
 1. List skills            Tip: press $ to open this list directly.
-2. Enable/Disable Skills  Enable or disable skills.```
+2. Enable/Disable Skills  Enable or disable skills.
+```
 
 For the first time when you go to 2. Enable/Disable Skills, you'd see <br>
 
 ```text
 [x] Skill Creator    Create or update a skill
-[ ] Skill Installer  Install curated skills from openai/skills or other repos```
+[ ] Skill Installer  Install curated skills from openai/skills or other repos
+```
 
 If you want to create a skill ( like tailoring a cv, choose 'Skill Creator' ). It is pretty intuitive and easy to create when you articulate it clearly ( pretty much prompt engineering ) <br>
 
@@ -56,11 +59,16 @@ I’m using the skill-installer skill. Its list-skills.py script needs network a
 
   Please run this command locally and paste the output here:
 
-  python "C:\Users\DELL\.codex\skills\.system\skill-installer\scripts\list-skills.py"```
+  python "C:\Users\DELL\.codex\skills\.system\skill-installer\scripts\list-skills.py"
+```
 
   Then tell me which skills you want installed.
 
-Inside 'Skill Installer' you can choose what to install. For example, if Agent wants to read PDFs, create PDFs , .docx etc.. then openAI has 
+If your Agent wants to read PDFs, create PDFs , .docx etc.. then. Example for PDF processing skills <br>
+```text
+  OpenAI Docs      Reference the official OpenAI Developer docs
+  PDF Skill        Create, edit, and review PDFs
+``` 
 
 
 ### Anatomy of skill specification

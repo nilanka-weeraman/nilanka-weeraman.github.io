@@ -29,17 +29,20 @@ Good news is that, there are skill creators ! Very similar to how you meta promp
 In Codex <br>
 go to /skills
 
-```/skills  use skills to improve how Codex performs specific tasks
+```text
+/skills  use skills to improve how Codex performs specific tasks```
 
 enter
 
-```1. List skills            Tip: press $ to open this list directly.
+```text
+1. List skills            Tip: press $ to open this list directly.
 2. Enable/Disable Skills  Enable or disable skills.```
 
 For the first time when you go to 2. Enable/Disable Skills, you'd see <br>
 
-``` [x] Skill Creator    Create or update a skill
- [ ] Skill Installer  Install curated skills from openai/skills or other repos```
+```text
+[x] Skill Creator    Create or update a skill
+[ ] Skill Installer  Install curated skills from openai/skills or other repos```
 
 If you want to create a skill ( like tailoring a cv, choose 'Skill Creator' ). It is pretty intuitive and easy to create when you articulate it clearly ( pretty much prompt engineering ) <br>
 
@@ -47,7 +50,8 @@ OpenAI provides a skill library that you can choose and install from.
 
 in codex prompt type $skill-installer which is another _skill_ <br>
 
-```I’m using the skill-installer skill. Its list-skills.py script needs network access, and this environment won’t allow me to run it 
+```text
+I’m using the skill-installer skill. Its list-skills.py script needs network access, and this environment won’t allow me to run it 
   with escalation.
 
   Please run this command locally and paste the output here:

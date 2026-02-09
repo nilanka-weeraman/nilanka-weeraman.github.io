@@ -74,13 +74,13 @@ I'll now explain my project structure for cv customization which will help me to
 
 ### Project Structure for CV customization
 
-This is how my repo looks now. _by the time I'm writing this section, I've added coverletter customization too which wasn't part of original plan_ <br>
+This is how my repo looks now. _by the time I'm writing this section, I've added coverletter customization skill, which wasn't part of original plan_ <br>
 
 
 ```text
 cv-customization/             # root folder
 ├── data_folder/              # reference data folder
-│   ├── coverletter_dtls/     # cover letter specifc requirements (depending on employer requirement)
+│   ├── coverletter_dtls/     # cover letter specific requirements (depending on some employer requirement)
 │   ├── coverletter_output/   # cover letter output folder
 │   ├── experience/           # different documents with your experience with career chapters. In .docx .md .pdf
 │   ├── jobdescriptions/      # job advertisments .pdf .docx .html .md .txt etc
@@ -101,9 +101,11 @@ So you get the idea ; it is upto you and me to customize the repo as matching to
 
 A skill specification is easy to understand, very much a prompt. It's in markdown form. <br>
 
-__Skills have context__ ; whether it is globally available for all Codex sessions or locally available for a specific repo / task. The idea is simple ; one don't need _cv-tailor_ skill in a repository which specializes in analysing data or creating ppts. <br>
+__Skills have context__ ; whether they are globally relevant across all Codex sessions or locally available for a specific repo / task. <br>
+The idea is simple ; you don't need _cv-tailor_ skill for a repository/project you have, to analyze data with custom instructions, schema to produce a ppt summary. <br>
 
-Lets look at one, I use to customize CV. Below was created using Codex's _skill-creator_ skill. I only validated and tweaked. _I've redacted some private and unwanted information_ <br>
+Lets look at the skill definition, I use to customize CV. <br>
+__Below was created using Codex's _skill-creator_ skill__. I only validated and tweaked. _I've redacted some personal and unwanted information_ <br>
 
 ```markdown
 ---

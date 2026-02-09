@@ -62,7 +62,7 @@ I’m using the skill-installer skill. Its list-skills.py script needs network a
   python "C:\Users\DELL\.codex\skills\.system\skill-installer\scripts\list-skills.py"
 ```
 
-  Then tell me which skills you want installed.
+  Then tell Codex which skills you want installed. In my case I wanted Codex to read PDFs, .docx etc. So I installed _PDF_ skill from the default skillset.
 
 If your Agent wants to read PDFs, create PDFs , .docx etc.. then. Example for PDF processing skills <br>
 ```text
@@ -73,7 +73,11 @@ If your Agent wants to read PDFs, create PDFs , .docx etc.. then. Example for PD
 
 ### Anatomy of skill specification
 
-A skill specification is easy to understand, very much a prompt. It's in markdown form. Lets look at one, I use to customize CV. _I've redacted some private and unwanted information_ <br>
+A skill specification is easy to understand, very much a prompt. It's in markdown form. <br>
+
+<b>Skills have context</b> ; whether it is globally available for all Codex sessions or locally available for a specific repo / task. The idea is simple ; one don't need _cv-tailor_ skill in a repository which specializes in analysing data or creating ppts. <br>
+
+Lets look at one, I use to customize CV. _I've redacted some private and unwanted information_ <br>
 
 ```markdown
 ---

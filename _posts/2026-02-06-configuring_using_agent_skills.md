@@ -20,7 +20,7 @@ Thus I used codex to build a streamlit app that can intake a latex code and gene
 Actually, my first option was to build this as a browser based app. I tried ChatGPT canvas ( with 5.1), Gemini Canvas ( 3 pro), Claude artefacts & Google AI Studio's app builder ( 3 pro) at the same time. To my great surprise none of them worked. It appears that setting up the latex to pdf conversion on browser has complicated dependencies on a Canvas like web app ( from downloading and using them browser runtime ). After spending some time on this, I realised it'd be better off to spend time on creating the app as a streamlit than taking a web development 101 course. To make the app available on the go, I used github codespaces as a runtime, which worked pretty well. [Credit to Simon agan !](https://simonwillison.net/tags/github-codespaces/) <br>
 The app interface looks like below ; <br>
 
-<img class="post-image" style="--post-image-width: 273px; --post-image-max: 320px;" src="{{ '/assets/images/latex-cv-previewer_edit.png' | relative_url }}" alt="cv previewer" width="270" height="180" />
+<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;" src="{{ '/assets/images/latex-cv-previewer_edit.png' | relative_url }}" alt="cv previewer" width="540" height="360" />
 <br>
 ### How to get started
 In basic, skills are simply instructions that you give to carryout a specific task to AI Agent.<br>

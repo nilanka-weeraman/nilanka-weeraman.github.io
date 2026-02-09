@@ -70,14 +70,40 @@ If your Agent wants to read PDFs, create PDFs , .docx etc.. then. Example for PD
   PDF Skill        Create, edit, and review PDFs
 ``` 
 
+I'll now explain my project structure for cv customization which will help me to explain the skill specification more clearly. <br>
+
+### Project Structure for CV customization
+
+This is how my repo looks now. _by the time I'm writing this section, I've added coverletter customization too which wasn't part of original plan_ <br>
+
+
+```text
+cv-customization/             # root folder
+├── data_folder/              # reference data folder
+│   ├── coverletter_dtls/     # cover letter specifc requirements (depending on employer requirement)
+│   ├── coverletter_output/   # cover letter output folder
+│   ├── experience/           # different documents with your experience with career chapters. In .docx .md .pdf
+│   ├── jobdescriptions/      # job advertisments .pdf .docx .html .md .txt etc
+│   └── references/           # reference cv template in latex (.tex) form
+├── latex/                    # cv output folder in .tex form 
+├── scripts/                  # some utility scripts I use to install latex to pdf conversions. used for env setup / portability only
+├── skills_local/             # project specific local skills
+│   ├── coverletter-tailor/   # skill for coverletter tailoring
+│   └── cv-tailor/            # skill for cv tailoring
+├── streamlitapps/            # my streamlit app to compile latex and generate PDF & proof read
+└── venvev/                   # python virtual env
+
+```
+
+So you get the idea ; it is upto you and me to customize the repo as matching to our needs <br>
 
 ### Anatomy of skill specification
 
 A skill specification is easy to understand, very much a prompt. It's in markdown form. <br>
 
-<b>Skills have context</b> ; whether it is globally available for all Codex sessions or locally available for a specific repo / task. The idea is simple ; one don't need _cv-tailor_ skill in a repository which specializes in analysing data or creating ppts. <br>
+__Skills have context__ ; whether it is globally available for all Codex sessions or locally available for a specific repo / task. The idea is simple ; one don't need _cv-tailor_ skill in a repository which specializes in analysing data or creating ppts. <br>
 
-Lets look at one, I use to customize CV. _I've redacted some private and unwanted information_ <br>
+Lets look at one, I use to customize CV. Below was created using Codex's _skill-creator_ skill. I only validated and tweaked. _I've redacted some private and unwanted information_ <br>
 
 ```markdown
 ---

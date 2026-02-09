@@ -72,3 +72,56 @@ If your Agent wants to read PDFs, create PDFs , .docx etc.. then. Example for PD
 
 
 ### Anatomy of skill specification
+
+A skill specification is easy to understand, very much a prompt. It's in markdown form. Lets look at one, I use to customize CV. _I've redacted some private and unwanted information_ <br>
+
+```markdown
+---
+name: cv-tailor
+description: Customize a LaTeX CV for this repository based on a job description file in jobdescriptions/ and experience sources in experience/. Use when asked to tailor a CV to a specific role; inputs may be .pdf/.html/.md/.txt for the job description and .pdf/.docx for experience. Output must be LaTeX written to latex/ using latex/<cv_name>.tex as the default template unless another template is specified.
+---
+
+# Cv Tailor
+
+## Overview
+
+Create a tailored LaTeX CV for a specific job description using the default template and the local experience library. Keep content truthful, concise, and aligned with the role requirements.
+
+## Workflow
+
+1. Confirm inputs and output name
+- Always ask for: (1) job description file path under jobdescriptions/, (2) reference CV LaTeX template (default: latex/<reference cv>.tex).
+- Ask for experience file paths under experience/ only if the user does not say "use all" (default: use all).
+- If the user did not provide an output filename, default to latex/<job_basename>_tailored_cv.tex. If that file exists, append _v2, _v3, etc.
+
+2. Load the job description text
+- .txt or .md: read as plain text.
+- .html: extract visible text and ignore scripts/styles/navigation.
+- .pdf: extract text with pdfminer.six; if extraction is poor, ask the user for a text export.
+
+3. Load experience sources
+- .pdf: extract text with pdfminer.six.
+- .docx: attempt extraction only if a local parser is available; otherwise ask the user to provide a text or PDF export.
+
+4. Derive the targeting signals
+- Identify the top required skills, tools, and responsibilities.
+- Map each requirement to the strongest matching experiences and achievements.
+- Select only substantiated claims from the source material.
+
+5. Tailor the LaTeX CV
+- Use latex/<reference cv>.tex as the base template unless the user specifies another template.
+- Preserve the template structure, macros, and formatting.
+- Update summary, skills, and experience bullet points to emphasize the role fit.
+- Keep wording tight and metrics-forward where evidence exists.
+
+6. Produce outputs
+- Write the full LaTeX document to the target file under latex/.
+- Return the full LaTeX content in the response so the user can render and proofread.
+
+## Guardrails
+
+- Do not invent experience, credentials, or metrics.
+- If required information is missing, ask targeted questions rather than guessing.
+- Keep changes limited to content sections; avoid altering layout or LaTeX preamble unless explicitly asked.
+
+```

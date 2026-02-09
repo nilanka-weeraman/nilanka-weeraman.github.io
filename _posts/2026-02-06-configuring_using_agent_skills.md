@@ -1,6 +1,6 @@
 ---
 layout: post
-title: " Configuring and using Agentic Skills "
+title: "Configuring and using Agentic Skills in Codex (CLI) "
 date: 2026-02-06 05:00:00 +1030
 ---
 Simon Wilson [predicted that skills will be a bigger deal than MCP](https://simonwillison.net/2025/Oct/16/claude-skills/) s five months ago ! With agent skills, the coding CLI s had been given the ability to become more generic agents. <br>
@@ -51,7 +51,7 @@ If you want to create a skill ( like tailoring a cv, choose 'Skill Creator' ). I
 
 OpenAI provides a skill library that you can choose and install from. 
 
-in codex prompt type $skill-installer which is another _skill_ <br>
+in codex prompt type _$skill-installer_ which is another skill. The output looks like below<br>
 
 ```text
 I’m using the skill-installer skill. Its list-skills.py script needs network access, and this environment won’t allow me to run it 

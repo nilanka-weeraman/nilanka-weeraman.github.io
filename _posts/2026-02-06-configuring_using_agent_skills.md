@@ -16,11 +16,11 @@ I was also facinated by the power of latex and how latex compiled pdf s (includi
 My simple planned workflow was ; 
 
 ```mermaid
-flowchart TD
-    A[Upload documents about experience, projects to ChatGPT project / Gemini Gem scope] --> B[Customize instructions for ChatGPT / Gems on how to tailor CV]
-    B --> C[For each application: Upload Job Description document / copy paste content]
-    C --> D[Ask ChatGPT / Gemini to generate the latex code for a CV]
-    D --> E[Compile latex code and proof read]
+flowchart LR
+    A[Upload documents about<br/>experience, projects to<br/>ChatGPT project / Gemini Gem scope] --> B[Customize instructions for<br/>ChatGPT / Gems on how to tailor CV]
+    B --> C[For each application:<br/>Upload Job Description<br/>document / copy paste content]
+    C --> D[Ask ChatGPT / Gemini to<br/>generate the latex code for a CV]
+    D --> E[Compile latex code<br/>and proof read]
     E --> F[Adjustments]
     F --> G[Final CV & Cover letter]
 ```

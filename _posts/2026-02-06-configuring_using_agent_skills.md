@@ -13,7 +13,17 @@ Also, in the meantime, I came across a great comprehensive open source project c
 
 I was also facinated by the power of latex and how latex compiled pdf s (including CV s) look professional. It would be really hard to match the styles and typesetting with a word processing software. So I decided to ask ChatGPT & Gemini to customize CV and generate a latex code, which should be compiled to generate a CV. <br>
 
-My simple planned workflow was ; Upload documents related to past experience, projects to ChatGPT project / Gemini Gem scope -> Customize instructions for ChatGPT / Gems on how to tailor CV -> _For each application_ Upload Job Description document / copy paste content -> Ask ChatGPT / Gemini to generate the latex code for a CV -> Compile latex code and proof read -> Adjustments -> Final CV & Cover letter. <br>
+My simple planned workflow was ; 
+
+```mermaid
+flowchart TD
+    A[Upload documents about experience, projects to ChatGPT project / Gemini Gem scope] --> B[Customize instructions for ChatGPT / Gems on how to tailor CV]
+    B --> C[For each application: Upload Job Description document / copy paste content]
+    C --> D[Ask ChatGPT / Gemini to generate the latex code for a CV]
+    D --> E[Compile latex code and proof read]
+    E --> F[Adjustments]
+    F --> G[Final CV & Cover letter]
+```<br>
 
 Thus I used codex to build a streamlit app that can intake a latex code and generate a PDF. <br>
 

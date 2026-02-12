@@ -23,7 +23,8 @@ flowchart TD
     D --> E[Compile latex code and proof read]
     E --> F[Adjustments]
     F --> G[Final CV & Cover letter]
-```<br>
+```
+<br>
 
 Thus I used codex to build a streamlit app that can intake a latex code and generate a PDF. <br>
 

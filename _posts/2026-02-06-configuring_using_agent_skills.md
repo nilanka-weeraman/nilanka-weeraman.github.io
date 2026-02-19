@@ -170,3 +170,45 @@ Create a tailored LaTeX CV for a specific job description using the default temp
 - Keep changes limited to content sections; avoid altering layout or LaTeX preamble unless explicitly asked.
 
 ```
+
+In simple form , skills are some definitive guidelines how the AI Agent should go about the task.
+For skills to work, the Agent should have access to a computing enviorment. I'll explain my enviornment where the agent work.
+
+```mermaid
+flowchart LR
+  %% Overall left-to-right layout to match the original
+
+  %% Left column
+  A["User Submit<br/>task<br/><br/><i>Customize cv</i>"]
+  B["Analyze<br/><br/><i>Whether task needs<br/>skills or not</i>"]
+
+  %% Right-side main groups (rounded container stays as-is unless you want it square too)
+  subgraph S["skills"]
+    direction LR
+    S1["local to repo<br/><br/>• cv-tailor<br/>• coverletter-<br/>tailor<br/>• ..."]
+    S2["global - generic for all<br/>sessions<br/><br/>• OpenAI Docs<br/>• PDF Skill"]
+  end
+
+  subgraph CE["computing environment"]
+    direction TB
+    C["python virtual environment<br/><br/>• pdfminer.six used to extract data from pdf<br/>• python-docx # to read and create .docx<br/>files"]
+  end
+
+  %% Connections + labels
+  A --> B
+  B <-->|load skill<br/>definitions| S1
+  B <-->|load skill<br/>definitions| S2
+
+  B -->|invoke commands<br/>to achieve task| C
+  S --> C
+
+  %% Square box styling
+  classDef square fill:#ffffff,stroke:#111,stroke-width:1px;
+
+  class A,B,S1,S2,C square;
+
+  %% Keep subgraph borders consistent (square too)
+  style S fill:#ffffff,stroke:#111,stroke-width:1px,rx:0,ry:0;
+  style CE fill:#ffffff,stroke:#111,stroke-width:1px,rx:0,ry:0;
+
+```

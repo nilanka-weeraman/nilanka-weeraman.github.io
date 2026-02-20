@@ -176,39 +176,39 @@ For skills to work, the Agent should have access to a computing enviorment. I'll
 
 ```mermaid
 flowchart LR
-  %% Overall left-to-right layout to match the original
+    %% Main Nodes
+    User("User Submit<br>task<br><br>Customize cv")
+    Analyze("Analyze<br>Whether task needs<br>skills or not")
 
-  %% Left column
-  A["User Submit<br/>task<br/><br/><i>Customize cv</i>"]
-  B["Analyze<br/><br/><i>Whether task needs<br/>skills or not</i>"]
+    %% Subgraphs for Containers
+    subgraph Skills ["skills"]
+        direction LR
+        Local("local to repo<br><br>• cv-tailor<br>• coverltetter-tailor<br>• ...")
+        Global("global - generic for all<br>sessions<br><br>• OpenAI Docs<br>• PDF Skill")
+    end
 
-  %% Right-side main groups (rounded container stays as-is unless you want it square too)
-  subgraph S["skills"]
-    direction LR
-    S1["local to repo<br/><br/>• cv-tailor<br/>• coverletter-<br/>tailor<br/>• ..."]
-    S2["global - generic for all<br/>sessions<br/><br/>• OpenAI Docs<br/>• PDF Skill"]
-  end
+    subgraph Computing ["computing enviornmnt"]
+        Venv("python virtual enviornment<br><br>• pdfminer.six #used to extract data from pdf<br>• python-docx #to read and create .docx files")
+    end
 
-  subgraph CE["computing environment"]
-    direction TB
-    C["python virtual environment<br/><br/>• pdfminer.six used to extract data from pdf<br/>• python-docx # to read and create .docx<br/>files"]
-  end
+    %% Edge Connections
+    User --> Analyze
+    Analyze -->|"Skills<br>Needed"| Skills
+    Skills -->|"loads skill<br>definitions"| Analyze
+    Analyze -->|"invoke commands<br>to achieve task"| Computing
+    Skills --> Computing
 
-  %% Connections + labels
-  A --> B
-  B <-->|load skill<br/>definitions| S1
-  B <-->|load skill<br/>definitions| S2
-
-  B -->|invoke commands<br/>to achieve task| C
-  S --> C
-
-  %% Square box styling
-  classDef square fill:#ffffff,stroke:#111,stroke-width:1px;
-
-  class A,B,S1,S2,C square;
-
-  %% Keep subgraph borders consistent (square too)
-  style S fill:#ffffff,stroke:#111,stroke-width:1px,rx:0,ry:0;
-  style CE fill:#ffffff,stroke:#111,stroke-width:1px,rx:0,ry:0;
+    %% Styling to match the clean white boxes and text formatting
+    style User fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    style Analyze fill:#fff,stroke:#000,stroke-width:1px,color:#000
+    
+    %% Standard nodes with () automatically get rounded corners, but we align text to left
+    style Local fill:#fff,stroke:#000,stroke-width:1px,color:#000,text-align:left
+    style Global fill:#fff,stroke:#000,stroke-width:1px,color:#000,text-align:left
+    style Venv fill:#fff,stroke:#000,stroke-width:1px,color:#000,text-align:left
+    
+    %% Style the outer subgraphs
+    style Skills fill:#fff,stroke:#000,stroke-width:1px,color:#000,rx:10,ry:10
+    style Computing fill:#fff,stroke:#000,stroke-width:1px,color:#000,rx:10,ry:10
 
 ```

@@ -213,7 +213,7 @@ flowchart LR
 
 ```
 
-At a high level ; when the user submits a task such as ; _tailor cv based on this job description at <location>_ the agent determines that it has a skill that can tailor the cv and uses __$cv-tailor__ skill. <br>
+At a high level ; when the user submits a task such as ; _"tailor cv based on this job description at..."_  the agent determines that it has a skill that can tailor the cv and uses __$cv-tailor__ skill. <br>
 Once the skill definition is read, Agent determines what tools it use. <br>
 For example if the job description is in .pdf the Agent can't parse pdf file by default. So it will rely on a library like 'pdfminer' to read the pdf and understand text. Similary , if the jd is in .docx it'll use 'python-docx' in my enviornment. Which external library to use is defined int  __skills.md__. <br>
 

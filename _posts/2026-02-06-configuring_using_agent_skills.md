@@ -212,3 +212,12 @@ flowchart LR
     style Computing fill:#fff,stroke:#000,stroke-width:1px,color:#000,rx:10,ry:10
 
 ```
+
+At a high level ; when the user submits a task such as ; _tailor cv based on this job description at <location>_ the agent determines that it has a skill that can tailor the cv and uses __$cv-tailor__ skill. <br>
+Once the skill definition is read, Agent determines what tools it use. <br>
+For example if the job description is in .pdf the Agent can't parse pdf file by default. So it will rely on a library like 'pdfminer' to read the pdf and understand text. Similary , if the jd is in .docx it'll use 'python-docx' in my enviornment. Which external library to use is defined int  __skills.md__. <br>
+
+The other important criteria is setting up the compute enviornment for the agent, so that it can run libraies like 'python-docx' to read text from a .docx file using pythohn. <br>
+The agent is capable of setting up the compute enviornment, but it depends on what persmission you give. <br>
+
+Once agent has a gist of the task's worflow and tools to use ( as defined in skills.md), it starts to reason and iterate through the solution.

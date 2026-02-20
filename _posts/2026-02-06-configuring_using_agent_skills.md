@@ -177,18 +177,18 @@ For skills to work, the Agent should have access to a computing enviorment. I'll
 ```mermaid
 flowchart LR
     %% Main Nodes
-    User("User Submit<br>task<br><br>Customize cv")
+    User("User Submit<br>task<br><br><i>Customize cv</i>")
     Analyze("Analyze<br>Whether task needs<br>skills or not")
 
     %% Subgraphs for Containers
     subgraph Skills ["skills"]
         direction LR
-        Local("local to repo<br><br>• cv-tailor<br>• coverltetter-tailor<br>• ...")
-        Global("global - generic for all<br>sessions<br><br>• OpenAI Docs<br>• PDF Skill")
+        Local("local to repo<br><br>•<b> cv-tailor<br><i>• coverltetter-tailor<br>• ...")
+        Global("global - generic for all<br>sessions<br><br>•<b><i> OpenAI Docs<br>• PDF Skill")
     end
 
     subgraph Computing ["computing enviornmnt"]
-        Venv("python virtual enviornment<br><br>• pdfminer.six #used to extract data from pdf<br>• python-docx #to read and create .docx files")
+        Venv("python virtual enviornment<br><br>•<b><i> pdfminer.six #used to extract data from pdf<br>• python-docx #to read and create .docx files")
     end
 
     %% Edge Connections

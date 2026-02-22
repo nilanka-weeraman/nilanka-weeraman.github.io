@@ -224,7 +224,7 @@ Once agent has a gist of the task's worflow and tools to use ( as defined in ski
 
 This is agent's thinking & action trail that gives a better view how agent uses skills ; <br>
 
-<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;" src="{{ '/assets/images/agent_workingt.png' | relative_url }}" alt="agent thiking trail" width="540" height="360" />
+<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;" src="{{ '/assets/images/agent_working.png' | relative_url }}" alt="agent thiking trail" width="540" height="360" />
 
 Another example of agent using enviornment (virtual python enviorment) to execute commands to achieve the task ( _converting a tailored coverletter to .docx_). <br>
 

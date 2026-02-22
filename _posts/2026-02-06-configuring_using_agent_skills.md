@@ -220,4 +220,13 @@ For example if the job description is in .pdf the Agent can't parse pdf file by 
 The other important criteria is setting up the compute enviornment for the agent, so that it can run libraies like 'python-docx' to read text from a .docx file using pythohn. <br>
 The agent is capable of setting up the compute enviornment, but it depends on what persmission you give. <br>
 
-Once agent has a gist of the task's worflow and tools to use ( as defined in skills.md), it starts to reason and iterate through the solution.
+Once agent has a gist of the task's worflow and tools to use ( as defined in skills.md), it starts to reason and iterate through the solution. <br>
+
+This is agent's thinking & action trail that gives a better view how agent uses skills ; <br>
+
+<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;" src="{{ '/assets/images/agent_workingt.png' | relative_url }}" alt="agent thiking trail" width="540" height="360" />
+
+Another example of agent using enviornment (virtual python enviorment) to execute commands to achieve the task ( _converting a tailored coverletter to .docx_). <br>
+
+<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;" src="{{ '/assets/images/agent_working_using_env.png' | relative_url }}" alt="agent enviornment & tool use" width="540" height="360" />
+

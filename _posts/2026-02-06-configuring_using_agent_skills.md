@@ -230,3 +230,4 @@ Another example of agent using enviornment (virtual python enviorment) to execut
 
 <img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;" src="{{ '/assets/images/agent_working_using_env.png' | relative_url }}" alt="agent enviornment & tool use" width="540" height="360" />
 
+__Dislcaimer : The intention was to get to a baseline tailored CV. Extensive manual review and manual edits were dont before finalizing the CV. At least good 3-4 hours are spent on one CV with mulitple generation - review - generation cycles.__

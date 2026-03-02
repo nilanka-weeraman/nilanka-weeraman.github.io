@@ -3,8 +3,9 @@ layout: post
 title: " Using Codex as Background Agent for Front End app "
 date: 2026-03-01 21:00:00 +1030
 ---
+__This is a continuation of my previous writeup of using [Agentic Skills](https://nilanka-weeraman.github.io/configuring_using_agent_skills/) ___<br>
 
-Now I have setup a workflow setup with Codex & Streamlit ( on python virtual env ). It was working smoothly.<br>
+I had setup a workflow to tailor CV s with Codex & Streamlit ( on python virtual env ). It was working smoothly.<br>
 Whenever I wanted changes to a CV, I would;<br>
 - manually alter the latex code
 - ask codex to change specific parts of the cv by providing section, subsection information.<br>

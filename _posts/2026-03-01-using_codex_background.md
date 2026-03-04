@@ -50,3 +50,32 @@ sequenceDiagram
     Note right of Rendered_cv : modified - cv_v1.pdf
 
 ```
+
+Now my app has an interface where I could provide all tailoring instructions. <br>
+I had to see the prompt / instruction sent to Codex as I faced some issues while development.<br>
+
+<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;"  src="{{ '/assets/images/unifiedapp-interface1.png' | relative_url }}" alt="unified interface" width="540" height="360" >
+
+The same interface supports text selection based edits. ie. I can select a part of the PDF and give specific instructions , such as ; make it more specific citing experience OR add quantitative outcome data. Codex is able to accurately follow these instructions and carryout edits. <br>
+
+<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;"  src="{{ '/assets/images/unifiedapp-interface-instructionbased-editinput1.png' | relative_url }}" alt="custom instruction input" width="540" height="360" >
+
+The underlying prompt structure is ; <br>
+
+```markdown
+carry out modifications to latex/[ cv file being reviewed ].tex. Edit instructions are ; [ Include additional sections covering
+(1) Publications
+(2) Other related intiatives ]
+JD context path: data_folder/jobdescriptions/[ JD of the position ].md
+Apply edits directly to the target file only.
+Preserve factual accuracy and stable LaTeX structure.
+If no selected text is provided and the instruction is ambiguous (for example: 'this section' / 'move this'), do not modify files. Ask for explicit target text.
+```
+
+I find that text search employed by the Codex is very accurate. Under the hood it only uses regular expression based text search. The text is determined by the LLM / Agent with similar semantic meaning to the query. <br>
+
+This is a very interesting area and I'm going to compare how effective is this search against a vector DB based RAG. <br>
+
+So that's how I ended up creating a toy app, that I think has a big potential / add-on to a website like LikedIn or Seek to tailor CVs , coverletters based on candidate's project history. The differentiator would be how much control such interface give the candidate to customize overall structure, specific text sections. <br>
+
+This is relatively easy for you to try out with any coding agent in your PC. I will be releasing the git repo once I clean it up a bit. <br>

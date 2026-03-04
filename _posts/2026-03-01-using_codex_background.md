@@ -58,7 +58,7 @@ I had to see the prompt / instruction sent to Codex as I faced some issues while
 
 The same interface supports text selection based edits. ie. I can select a part of the PDF and give specific instructions , such as ; make it more specific citing experience OR add quantitative outcome data. Codex is able to accurately follow these instructions and carryout edits. <br>
 
-<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;"  src="{{ '/assets/images/unifiedapp-interface-instructionbased-editinput1.png' | relative_url }}" alt="custom instruction input" width="540" height="360" >
+<img class="post-image" style="--post-image-width: 546px; --post-image-max: 640px; max-width:100%; height:auto;"  src="{{ '/assets/images/unifiedapp-interface-instructionbased-editinput.png' | relative_url }}" alt="custom instruction input" width="540" height="360" >
 
 The underlying prompt structure is ; <br>
 

@@ -50,6 +50,22 @@ body {
   font-size: 1.05rem;
 }
 
+.site-nav {
+  margin-top: 16px;
+  display: flex;
+  gap: 14px;
+}
+
+.site-nav a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
 .post-list {
   list-style: none;
   padding: 0;
@@ -82,10 +98,34 @@ body {
   font-size: 1.6rem;
 }
 
+.post-card h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  color: var(--accent);
+}
+
 .post-meta {
   margin: 0;
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.post-tags {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.post-tags a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.post-tags a:hover {
+  text-decoration: underline;
 }
 
 .post {

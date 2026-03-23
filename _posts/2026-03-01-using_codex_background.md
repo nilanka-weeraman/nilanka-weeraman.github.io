@@ -2,6 +2,7 @@
 layout: post
 title: " Using Codex as Background Agent for Front End app "
 date: 2026-03-01 21:00:00 +1030
+tags: [codex, frontend, streamlit, ai-agents]
 ---
 __This is a continuation of my previous writeup of using [Agentic Skills](https://nilanka-weeraman.github.io/configuring_using_agent_skills/)__<br>
 

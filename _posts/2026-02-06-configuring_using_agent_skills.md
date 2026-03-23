@@ -2,6 +2,7 @@
 layout: post
 title: "Configuring and using Agentic Skills in Codex (CLI) "
 date: 2026-02-06 05:00:00 +1030
+tags: [codex, skills, ai-agents, career-tools]
 ---
 Simon Wilson [predicted that skills will be a bigger deal than MCP](https://simonwillison.net/2025/Oct/16/claude-skills/) s five months ago ! With agent skills, the coding CLI s had been given the ability to become more generic agents. <br>
 

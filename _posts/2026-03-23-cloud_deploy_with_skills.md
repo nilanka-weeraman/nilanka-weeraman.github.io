@@ -40,14 +40,18 @@ I came across this [Azure plugin for coding agents](https://devblogs.microsoft.c
 I instructed Antigravity agent to pull the skills and install them, and it did exactly that.  
 After authenticating azure cli, I asked Antigravity ; 
 
+```text
 I have configured azure cli and authenticated via command line 'az login'. I want a plan to port the current application ( job-applier-agent-langchain ) in this repository to azure. Use azure skill plugin and determine ; 'What Azure services would I need to deploy this project?'
+```
 
 It came up with the intended services that I had in mind. ACA, Key Vault. *I wanted to use blob storage instead of File Share, but that is not possible with ACA*  
 ![][image2]
 
 I want to test the skill and make it bit more complicated, hence asked ; 
 
+```text
 instead of using azure container registry I'd like to use git container register. Alter the plan accordingly. I can provid the git access tokens.
+```
 
 The agent updated its implementation plan with GHCR.   
 *Git Container Registry ( GHCR ) is free to use compared to Azure CR.*
@@ -65,7 +69,7 @@ One great thing about Antigravity’s process is that, you can comment on the im
 Then, I moved on to creating the Azure resources and instructed Agent to do so;
 
 This is how it deployed resources with bicep.  
-*Note : it is not the best practice to provide your keys to the agent. Instead you could run the command.*
+_Note : it is not the best practice to provide your keys to the agent. Instead you could run the command_
 
 ![][image5]
 
@@ -83,8 +87,8 @@ My next plan is to extend this app, so that I can give a JD from whatsapp and fi
 
 With agent skills, now devops teams can quickly rearchitect any app for cloud deployment.
 
-The team could maintain a separate skill library that has enterprise vetted deployment templates to comply with standardisation.  
-Have other skills to review IAM policies, bucket policies, trust relationships etc, a governance skill.  
+-The team could maintain a separate skill library that has enterprise vetted deployment templates to comply with standardisation.  
+-Have other skills to review IAM policies, bucket policies, trust relationships etc, a governance skill.  
 The team's intent and imagination would be the limit here.
 
 However, respecting practical engineering challenges, the teams must spend significant time finetuning such skills.

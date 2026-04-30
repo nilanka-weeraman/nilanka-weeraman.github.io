@@ -69,6 +69,8 @@ This is one of the Iceberg’s key features addressing previous limitations of H
 **Scenario : My first table is ready to use, but query results are slow. I might need to add partitions**
 
 This is a typical optimization option in data lakes. If your queries take time or does full table scans, it is time to partition. Iceberg can easily add partitions by alter table statement. For example adding a daily partition for a timestamp column 
+
+<div class="code-narrow">
 ```sql
 spark.sql("""
     ALTER TABLE your_table_name
@@ -80,4 +82,4 @@ spark.sql("""
 
 No you don't. This feature is called **hidden partitions**. As long as you use the original column in your query predicate, the partition will be used. ie. you can still use timestamp column which used to create daily partition above, but iceberg will only use relevant data files for the query. <br>
 
-This is a great feature, as the data engineers could silently add partitions based on query patterns and there are no downstream or upstream ETL changes required ! The users will feel improved performance.
+This is a great feature, as data engineers can silently add partitions based on query patterns and there are no downstream or upstream ETL changes required ! The users will feel improved performance.

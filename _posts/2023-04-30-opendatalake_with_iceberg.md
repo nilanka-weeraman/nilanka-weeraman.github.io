@@ -41,15 +41,9 @@ With Icberg changes, the stack has evolved into something like below <br>
 
 The design goals or problems addressed by Iceberg are ; 
 
-Schema evolution
-Partition evolution  
-Versioning & time travel  
-Continuous Deployment  
-Metrics for planning  
-Invisible partitioning  
-Concurrent writes
+Schema evolution, Partition evolution, Versioning & time travel, Continuous Deployment, Metrics for planning, Invisible partitioning, Concurrent writes
 
-Now let's take a look while following a practical data engineering workflow.
+Now let's take a look at these concepts while following a practical data engineering workflow.
 
 **Scenario : I have a bunch of parquet files which were created by other engines ( Spark, Athena etc.. ), now I want to convert them to Iceberg..**
 
@@ -69,4 +63,4 @@ Adding data vs inserting
 
 **Scenario : Now I have migrated existing data to Iceberg tables. Now I want to add some columns and remove unwanted columns**
 
-This is one of the Iceberg’s key features addressing previous limitations of Hive. Iceberg supports **schema evolution.** You can add , remove, rename columns as if it's done in a traditional database using alter table (add | drop | rename ) column statement. This is a *metadata only operation*, which means that no changes to data files. Iceberg has some robust ways to handle this which you can explore during the course. Refer this [notebook for actual implementations.](https://github.com/Snowflake-Labs/apache-iceberg-from-zero/blob/main/notebooks/E2.3%20-%20SchemaAndPartitionEvolution.ipynb)
+This is one of the Iceberg’s key features addressing previous limitations of Hive. Iceberg supports **schema evolution.** You can add , remove, rename columns as if it's done in a traditional database using alter table (add \| drop \| rename ) column statement. This is a *metadata only operation*, which means that no changes to data files. Iceberg has some robust ways to handle this which you can explore during the course. Refer this [notebook for actual implementations.](https://github.com/Snowflake-Labs/apache-iceberg-from-zero/blob/main/notebooks/E2.3%20-%20SchemaAndPartitionEvolution.ipynb)

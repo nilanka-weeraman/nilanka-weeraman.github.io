@@ -64,3 +64,14 @@ Adding data vs inserting
 **Scenario : Now I have migrated existing data to Iceberg tables. Now I want to add some columns and remove unwanted columns**
 
 This is one of the Iceberg’s key features addressing previous limitations of Hive. Iceberg supports **schema evolution.** You can add , remove, rename columns as if it's done in a traditional database using alter table (add \| drop \| rename ) column statement. This is a *metadata only operation*, which means that no changes to data files. Iceberg has some robust ways to handle this which you can explore during the course. Refer this [notebook for actual implementations.](https://github.com/Snowflake-Labs/apache-iceberg-from-zero/blob/main/notebooks/E2.3%20-%20SchemaAndPartitionEvolution.ipynb)
+
+
+**Scenario : My first table is ready to use, but query results are slow. I might need to add partitions**
+
+This is a typical optimization option in data lakes. If your queries take time or does full table scans, it is time to partition. Iceberg can easily add partitions by alter table statement. For example adding a daily partition for a timestamp column 
+```sql
+spark.sql("""
+    ALTER TABLE your_table_name
+    ADD PARTITION FIELD days(your_timestamp_column)
+""")
+```

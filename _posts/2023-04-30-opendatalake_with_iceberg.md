@@ -70,7 +70,7 @@ This is one of the Iceberg’s key features addressing previous limitations of H
 
 This is a typical optimization option in data lakes. If your queries take time or does full table scans, it is time to partition. Iceberg can easily add partitions by alter table statement. For example adding a daily partition for a timestamp column 
 
-<div class="code-narrow">
+<div style="max-width: 500px;">
 ```sql
 spark.sql("""
     ALTER TABLE your_table_name

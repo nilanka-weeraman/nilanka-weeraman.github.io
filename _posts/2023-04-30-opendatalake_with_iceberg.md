@@ -84,3 +84,45 @@ spark.sql("""
 No you don't. This feature is called **hidden partitions**. As long as you use the original column in your query predicate, the partition will be used. ie. you can still use timestamp column which used to create daily partition above, but iceberg will only use relevant data files for the query. <br>
 
 This is a great feature, as data engineers can silently add partitions based on query patterns and there are no downstream or upstream ETL changes required ! The users will feel improved performance.
+
+**Scenario : So far so good. But I might want my partition daily partition to changed to monthly. Should I recreate the table ?**
+
+No you don't have to recreate. Iceberg's *partition evolution* handles this. Iceberg table can have a new partition for the same column. You can remove old partition and add a new monthly partition. The catch here is ; only the newly inserted data will be partitioned monthly while old partition will be a one big default partition. And if you change your mind again to rever to daily partition, that's fine Iceberg will use older daily partition, consider monthly partition as a different partition and newly inserted data will be daily partitioned into files. 
+
+**Scenario : Oops, I accidently deleted an entire monthly partition. Is there a way to recover ??**
+
+Yes, becauase every change to a table is stored as a _commit_ in Iceberg with metadata ( _snapshots_), you can reinstate the pre-delete records. This is called **time travel** feature. The feature is entirely possible due to isolation of metadata (snapshots) with actual data files. You can fire your SQL with the specific table version as ; 
+```sql
+SELECT your_columns FROM your_table VERSION AS OF your_table's_snapshot_id
+```
+
+How do you find the snapshot ID ? By querying the metadata table as ;
+```sql
+SELECT snapshot_id, committed_at, operation FROM yout_table_name.snapshots ORDER BY committed_at
+```
+Refer [this notebook for examples](https://github.com/Snowflake-Labs/apache-iceberg-from-zero/blob/main/notebooks/E2.2%20-%20BranchingAndTagging.ipynb)
+
+If you are coming from a database background, this is a familiar operation whereby reinstating using _redo logs_ in Oracle. So again it is evident that lot of database features are now made available for data lake tables with Iceburg.
+
+**Scenario : That's a big hedeache gone. I want to change a column to match a data source change. I want the change to be tested before commiting to final table.**
+
+This is typical change request for a data engineer. We could create a temporary table with new logic and provide access for testing or use Iceberg's *Write Audit Publish (WAP)* elegantly.
+The operation is similar to rollback, commit procedure in traditional databases, but now available in data lake tables ! The process is similar ; <br>
+Stage the write ( spark.conf.set("spark.wap.id", "a_friendly_name") ) -> do the change -> end stage ( spark.conf.unset("spark.wap.id") ) <br>
+
+The change is not visible in the main table. But you can ask a user to validate the change by referring the correct snapshot as ; 
+
+```sql
+SELECT columns FROM your_table_name VERSION AS OF snapshot_id_of_the_change
+```
+
+If the user is satisfied with the change, you can **publish** the change by using polaris's system.publish_change procedure and then cleaning up the audit stage by using system.expire_snapshot procedure. <br>
+
+These system procedures are metadata only procedures and does not affect any datafile changes. We will see how to cleanup datafiles later.
+
+**Scenario : Good. I want to write a new ETL and compare read performance and switch to new ETL if performance is better. Is there a better way to do this ?**
+
+Yes, this sounds like a typical software feature branch and Iceberg supports branching. **No data is duplilcated** for the new branch, instead only incremental changes on this branch are written to different data filesLets see how its done. This is the same feature Snowflake offers as _cloning_. Now you'd understand probable inner working how this is implemented. Lets see how its done.<br>
+
+
+

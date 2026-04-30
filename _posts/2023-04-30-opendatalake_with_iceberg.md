@@ -77,6 +77,7 @@ spark.sql("""
     ADD PARTITION FIELD days(your_timestamp_column)
 """)
 ```
+</div>
 
 **Scenario : Okay I've added a partition. Should I change my queries to use partition columns ?**
 

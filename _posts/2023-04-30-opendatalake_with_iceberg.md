@@ -75,3 +75,9 @@ spark.sql("""
     ADD PARTITION FIELD days(your_timestamp_column)
 """)
 ```
+
+**Scenario : Okay I've added a partition. Should I change my queries to use partition columns ?**
+
+No you don't. This feature is called **hidden partitions**. As long as you use the original column in your query predicate, the partition will be used. ie. you can still use timestamp column which used to create daily partition above, but iceberg will only use relevant data files for the query. <br>
+
+This is a great feature, as the data engineers could silently add partitions based on query patterns and there are no downstream or upstream ETL changes required ! The users will feel improved performance.

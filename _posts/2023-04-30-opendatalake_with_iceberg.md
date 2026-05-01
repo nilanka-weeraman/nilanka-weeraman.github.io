@@ -122,7 +122,10 @@ These system procedures are metadata only procedures and does not affect any dat
 
 **Scenario : Good. I want to write a new ETL and compare read performance and switch to new ETL if performance is better. Is there a better way to do this ?**
 
-Yes, this sounds like a typical software feature branch and Iceberg supports branching. **No data is duplilcated** for the new branch, instead only incremental changes on this branch are written to different data filesLets see how its done. This is the same feature Snowflake offers as _cloning_. Now you'd understand probable inner working how this is implemented. Lets see how its done.<br>
+Yes, this sounds like a typical software feature branch and Iceberg supports branching. **No data is duplilcated** for the new branch, instead only incremental changes on this branch are written to different data filesLets see how its done. This is the same feature Snowflake offers as _cloning_. Now you'd understand probable inner working how this is implemented. Lets see how its done in Spark & Polaris<br>
 
+- First define a branch with 'Alter table create branch' statement.
+- You can do bunch of processing for this branch of the table, referring the table as 'table_name.BRANCH_branchname'
+- Then merge into the main branch with system.fast_forward procedure.
 
-
+_if the main branch change before merge, we have to rebase our branch_

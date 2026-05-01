@@ -54,7 +54,7 @@ Now let's take a look at these concepts while following a practical data enginee
 [Continuous table modification with Write Audit Publish ](#wap)<br>
 [Continuous experimentating with Branching and merging](#branching)<br>
 
-### Scenario : I have a bunch of parquet files which were created by other engines ( Spark, Athena etc.. ), now I want to convert them to Iceberg..{#createmigrate}
+### Scenario : I have a bunch of parquet files which were created by other engines ( Spark, Athena etc.. ), now I want to convert them to Iceberg {#createmigrate}
 
 Iceberg natively support parquet, avro, orc file types. If you have Polaris as a catalog , this migration can be done in several ways. Assume you have Polaris as the catalog service & Spark as the analytic engine.
 
@@ -75,7 +75,7 @@ Adding data vs inserting
 This is one of the Iceberg’s key features addressing previous limitations of Hive. Iceberg supports **schema evolution.** You can add , remove, rename columns as if it's done in a traditional database using alter table (add \| drop \| rename ) column statement. This is a *metadata only operation*, which means that no changes to data files. Iceberg has some robust ways to handle this which you can explore during the course. Refer this [notebook for actual implementations.](https://github.com/Snowflake-Labs/apache-iceberg-from-zero/blob/main/notebooks/E2.3%20-%20SchemaAndPartitionEvolution.ipynb)
 
 
-### Scenario : My first table is ready to use, but query results are slow. I might need to add partitions{#partioning}
+### Scenario : My first table is ready to use, but query results are slow. I might need to add partition  {#partioning}
 
 This is a typical optimization option in data lakes. If your queries take time or does full table scans, it is time to partition. Iceberg can easily add partitions by alter table statement. For example adding a daily partition for a timestamp column 
 
@@ -88,17 +88,17 @@ spark.sql("""
 ```
 </div>
 
-### Scenario : Okay I've added a partition. Should I change my queries to use partition columns ?{#hiddenpartitions}
+### Scenario : Okay I've added a partition. Should I change my queries to use partition columns  {#hiddenpartitions}
 
 No you don't. This feature is called **hidden partitions**. As long as you use the original column in your query predicate, the partition will be used. ie. you can still use timestamp column which used to create daily partition above, but iceberg will only use relevant data files for the query. <br>
 
 This is a great feature, as data engineers can silently add partitions based on query patterns and there are no downstream or upstream ETL changes required ! The users will feel improved performance.
 
-### Scenario : So far so good. But I might want my partition daily partition to changed to monthly. Should I recreate the table ? {#partitionevolution}
+### Scenario : So far so good. But I might want my partition daily partition to changed to monthly. Should I recreate the table? {#partitionevolution}
 
 No you don't have to recreate. Iceberg's *partition evolution* handles this. Iceberg table can have a new partition for the same column. You can remove old partition and add a new monthly partition. The catch here is ; only the newly inserted data will be partitioned monthly while old partition will be a one big default partition. And if you change your mind again to rever to daily partition, that's fine Iceberg will use older daily partition, consider monthly partition as a different partition and newly inserted data will be daily partitioned into files. 
 
-### Scenario : Oops, I accidently deleted an entire monthly partition. Is there a way to recover ??{#timetravel}
+### Scenario : Oops, I accidently deleted an entire monthly partition. Is there a way to recover?   {#timetravel}
 
 Yes, becauase every change to a table is stored as a _commit_ in Iceberg with metadata ( _snapshots_), you can reinstate the pre-delete records. This is called **time travel** feature. The feature is entirely possible due to isolation of metadata (snapshots) with actual data files. You can fire your SQL with the specific table version as ; 
 ```sql
@@ -129,7 +129,7 @@ If the user is satisfied with the change, you can **publish** the change by usin
 
 These system procedures are metadata only procedures and does not affect any datafile changes. We will see how to cleanup datafiles later.
 
-### Scenario : Good. I want to write a new ETL and compare read performance and switch to new ETL if performance is better. Is there a better way to do this ? {#branching}
+### Scenario : Good. I want to write a new ETL and compare read performance and switch to new ETL if performance is better. Is there a better way to do this? {#branching}
 
 Yes, this sounds like a typical software feature branch and Iceberg supports branching. **No data is duplilcated** for the new branch, instead only incremental changes on this branch are written to different data filesLets see how its done. This is the same feature Snowflake offers as _cloning_. Now you'd understand probable inner working how this is implemented. Lets see how its done in Spark & Polaris<br>
 

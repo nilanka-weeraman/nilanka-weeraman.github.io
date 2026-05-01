@@ -47,7 +47,7 @@ Now let's take a look at these concepts while following a practical data enginee
 
 [How to create my first Iceberg table or migrate to Iceberg](#createmigrate)<br>
 [Altering tables (Schema evolution) ](#schemaevolution)<br>
-[Adding partitions](#partioning)<
+[Adding partitions](#partioning)<br>
 [Hidden partitions](#hiddenpartitions)<br>
 [Optimizing partitions (partition evolution)](#partitionevolution)<br>
 [Recover old data or table versions ( time travel )](#timetravel)<br>
@@ -75,7 +75,7 @@ Adding data vs inserting
 This is one of the Iceberg’s key features addressing previous limitations of Hive. Iceberg supports **schema evolution.** You can add , remove, rename columns as if it's done in a traditional database using alter table (add \| drop \| rename ) column statement. This is a *metadata only operation*, which means that no changes to data files. Iceberg has some robust ways to handle this which you can explore during the course. Refer this [notebook for actual implementations.](https://github.com/Snowflake-Labs/apache-iceberg-from-zero/blob/main/notebooks/E2.3%20-%20SchemaAndPartitionEvolution.ipynb)
 
 
-### Scenario : My first table is ready to use, but query results are slow. I might need to add partitions{#partitions}
+### Scenario : My first table is ready to use, but query results are slow. I might need to add partitions{#partioning}
 
 This is a typical optimization option in data lakes. If your queries take time or does full table scans, it is time to partition. Iceberg can easily add partitions by alter table statement. For example adding a daily partition for a timestamp column 
 
@@ -88,7 +88,7 @@ spark.sql("""
 ```
 </div>
 
-**Scenario : Okay I've added a partition. Should I change my queries to use partition columns ?**{#hiddenpartitions}
+### Scenario : Okay I've added a partition. Should I change my queries to use partition columns ?{#hiddenpartitions}
 
 No you don't. This feature is called **hidden partitions**. As long as you use the original column in your query predicate, the partition will be used. ie. you can still use timestamp column which used to create daily partition above, but iceberg will only use relevant data files for the query. <br>
 
@@ -113,7 +113,7 @@ Refer [this notebook for examples](https://github.com/Snowflake-Labs/apache-iceb
 
 If you are coming from a database background, this is a familiar operation whereby reinstating using _redo logs_ in Oracle. So again it is evident that lot of database features are now made available for data lake tables with Iceburg.
 
-### Scenario : That's a big hedeache gone. I want to change a column to match a data source change. I want the change to be tested before commiting to final table.{#wap}
+### Scenario : That's a big hedeache gone. I want to change a column to match a data source change. I want the change to be tested before commiting to final table. {#wap}
 
 This is typical change request for a data engineer. We could create a temporary table with new logic and provide access for testing or use Iceberg's *Write Audit Publish (WAP)* elegantly.
 The operation is similar to rollback, commit procedure in traditional databases, but now available in data lake tables ! The process is similar ; <br>

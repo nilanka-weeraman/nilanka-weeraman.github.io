@@ -138,3 +138,7 @@ Yes, this sounds like a typical software feature branch and Iceberg supports bra
 - Then merge into the main branch with system.fast_forward procedure.
 
 _if the main branch change before merge, we have to rebase our branch_
+
+### Scenario : Does Iceberg has any limitations ? Can it ingest streaming data ? {#ingestions}
+
+Lets see some issues that arise with all the nice features offered above. As you can guess, Iceberg use its metadata for offering features such as _timetravel_, _ACID type operations_, _version control_. When data is modified each create table **snapshots**. Over time these snapshots will grow. As metadata grows the processing engine incur .

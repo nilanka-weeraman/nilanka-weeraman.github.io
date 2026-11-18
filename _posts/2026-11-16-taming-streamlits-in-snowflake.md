@@ -19,4 +19,31 @@ On other hand, Snowflake made changes to and now prefers Snowpark Container Serv
 
 Currently Streamlit in Snowflake (SiS) doesn't have auto suspend type feature, which is available for its Warehouses. So an idle SiS App would go on for 3 days , making the hosting compute pool active before triggering a suspension. Unfortunately there is no auto spend timer for SiS on SCS. <br>
 
-While thinking any workarounds, I stumbled upon that Snowflake's telemetry tables gathering metrics about running services and Jobs. This is pretty much AWS's Cloudwatch equivalent, but in a ... Table of course. The event table is - `snowflake.events.telemetry`. 
+While thinking about workarounds, I stumbled upon that Snowflake's telemetry keep track of metrics about the services it runs. This is pretty much AWS's Cloudwatch equivalent, but in a ... Table of course. The event table is - `snowflake.events.telemetry`. And one of those metrics were `streamlit_app_active_sessions` !! <br>
+The stragest thing is that in any Snowflake documentation I couldn't find any details about this metric. Snowflake documentation says, that you can configure logging to collect event data to telemetry tables, that's all <br>
+Anyways after running a few experiments, I realised `streamlit_app_active_sessions` value is 0 when there are no active browser opend with the streamlit app. As long a Streamlit is open in a browser tab the value would be 1. <br>
+
+If your Streamlit uses SCS, the container will shut down after 3 days of no activity. This is strage considering Snowflake providing more granular Warehouse suspend controls. The 3 days is not configurable and we are at mercy of Snowflake. This is of course as of Nov-2026. <br>
+Thus, untill Snowflake comes up with a solution, I implemented the following mechanism to detect inactive sessions and suspend Compute Pool. <br>
+
+- Query event table as <br>
+  ```sql
+  select      
+    timestamp,
+    resource_attributes['snow.service.name']::VARCHAR as service_name,
+    record['metric']['name']::VARCHAR metric,
+    value
+  from
+  snowflake.telemetry.events where timestamp  >= timestampadd('minute',-1*$idle_mins, current_timestamp())
+      and scope['name']::VARCHAR like 'sis-streamlit-app'
+      and resource_attributes['snow.compute_pool.name']::VARCHAR like $cp 
+      and record['metric']['name']::VARCHAR like 'streamlit_app_active_sessions'
+  order by timestamp desc
+  ```
+The query result in very granular values for active session count for each streamlit app in your account.
+- Compute a summary for any active sessions and suspend the Pool is value is zero.
+  
+  Simple as that. <br>
+  A snowflake procedure and a task is all you need. <br>
+
+  Also this require your Apps to be spread across different compute pools. Otherwise a opened browser page will keep the entire Pool up. As a pre-requsite , it is required to comeup with several compute pools based on Streamlit traffic. <br>

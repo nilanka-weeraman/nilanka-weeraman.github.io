@@ -5,7 +5,6 @@ date: 2026-11-16 10:00:00 +0930
 tags: [dataengineering, dataproducts, optimisations, streamlit]
 ---
 
-_Work In Progress Article_<br>
 
 If you had tried Streamlit Apps, you'd agree with me that it is a very promising framework to build data products, which was a bottleneck for any data analytics, science team.<br> Frameworks like [Streamlit](https://github.com/streamlit/streamlit) and [Gradio](https://github.com/gradio-app/gradio) fit nicely into building the UI layer or the tip of the iceberg of a complex data system. <br>
 Seeing the promise, Snowflake acquired Stremlit in 2022 and still maintains it as an open source project. And since then Snowflake provide hosted Streamlit service and seems to be [adopting it heavily for internal tooling](https://www.snowflake.com/en/blog/engineering/scaling-enterprise-analytics-streamlit-apps/). <br>

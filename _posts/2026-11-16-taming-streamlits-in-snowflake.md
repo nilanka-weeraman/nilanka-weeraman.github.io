@@ -44,7 +44,11 @@ Thus, untill Snowflake comes up with a solution, I implemented the following mec
 The query result in very granular values for active session count for each streamlit app in your account.
 - Compute a summary for any active sessions and suspend the Pool is value is zero.
   
-  Simple as that. <br>
-  A snowflake procedure and a task is all you need. <br>
+Simple as that. <br>
+A snowflake procedure and a task is all you need. <br>
 
-  Also this require your Apps to be spread across different compute pools. Otherwise a opened browser page will keep the entire Pool up. As a pre-requsite , it is required to comeup with several compute pools based on Streamlit traffic. <br>
+Also this require your Apps to be spread across different compute pools. Otherwise a opened browser page will keep the entire Pool up. As a pre-requsite , it is required to comeup with several compute pools based on Streamlit traffic. <br>
+
+Going further, we can suspend each container service with `alter service service_name suspend` command rather than waiting for the entire Compute Pools' `streamlit_app_active_sessions` goes to zero. The above procedure can be extended to monitor active session per service and suspend it. If the service is suspended while `streamlit_app_active_sessions` is 1 for that service, the service will restart immediately. 
+
+So that's about it, we can essentially control how Streamlits on Snowflake should behave with customized implementation of a suspension policy.
